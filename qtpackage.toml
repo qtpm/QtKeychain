@@ -1,0 +1,7 @@
+name = "QtKeychain"
+author = "Frank Osterfeld"
+organization = ""
+license = "Modified BSD License (BSD 3-clause)"
+qtmodules = ["Core"]
+version = [0, 5, 0]
+project_start_year = 2011

@@ -1,0 +1,24 @@
+# Additional configuration
+# This file is included from auto generated CMakeLists.txt
+
+include_directories(src/private)
+
+set(QTKEYCHAIN_VERSION_INFIX 5)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+qt5_wrap_cpp(qtkeychain_MOC_OUTFILES src/keychain.h src/private/keychain_p.h)
+
+if(UNIX AND NOT APPLE)
+  find_package(Qt5DBus REQUIRED)
+  qt5_add_dbus_interface(sources ${CMAKE_CURRENT_SOURCE_DIR}/org.kde.KWallet.xml kwallet_interface KWalletInterface)
+  link_libraries(${Qt5DBus_LIBRARIES})
+endif()
+
+if(WIN32)
+  link_libraries(crypt32)
+endif()
+
+if(APPLE)
+  find_library(COREFOUNDATION_LIBRARY CoreFoundation)
+  find_library(SECURITY_LIBRARY Security)
+  link_libraries(${COREFOUNDATION_LIBRARY} ${SECURITY_LIBRARY})
+endif()
