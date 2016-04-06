@@ -9,7 +9,7 @@
 #include <QCoreApplication>
 #include <QStringList>
 
-#include "keychain.h"
+#include "qtkeychain/keychain.h"
 #include <iostream>
 
 using namespace QKeychain;
