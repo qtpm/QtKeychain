@@ -7,6 +7,8 @@ set(QTKEYCHAIN_VERSION_INFIX 5)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 qt5_wrap_cpp(qtkeychain_MOC_OUTFILES src/keychain.h src/private/keychain_p.h)
 
+add_definitions(-DQKEYCHAIN_STATICLIB)
+
 if(UNIX AND NOT APPLE)
   find_package(Qt5DBus REQUIRED)
   qt5_add_dbus_interface(sources ${CMAKE_CURRENT_SOURCE_DIR}/org.kde.KWallet.xml kwallet_interface KWalletInterface)
